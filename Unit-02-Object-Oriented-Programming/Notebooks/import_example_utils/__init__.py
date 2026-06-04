@@ -18,5 +18,3 @@ from .student_utils import (
 ### from import_example_utils import Student, class_average
 
 
-
-
