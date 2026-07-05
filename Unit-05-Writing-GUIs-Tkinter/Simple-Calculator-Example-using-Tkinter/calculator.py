@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import Tk, StringVar, Entry, Button 
 
 # ---------------- WINDOW SETUP ----------------
 win = Tk()
@@ -51,7 +51,7 @@ display_var = StringVar()
 display = Entry(
     win,
     textvariable=display_var,
-    font=("Helvetica", 7),
+    font=("Helvetica", 14),
     bg="black",
     fg="white",
     bd=0,
