@@ -105,7 +105,7 @@ def right():
 tool_bar = ttk.Frame(win)
 tool_bar.pack(side=tk.TOP, fill=tk.X)
 
-# --- ICONS ---
+# ================= ICONS =================
 new_icon = tk.PhotoImage(file=os.path.join(BASE_DIR, "icons/new.png"))
 open_icon = tk.PhotoImage(file=os.path.join(BASE_DIR, "icons/open.png"))
 save_icon = tk.PhotoImage(file=os.path.join(BASE_DIR, "icons/save.png"))
@@ -125,7 +125,7 @@ align_left_icon = tk.PhotoImage(file=os.path.join(BASE_DIR, "icons/align_left.pn
 align_center_icon = tk.PhotoImage(file=os.path.join(BASE_DIR, "icons/align_center.png"))
 align_right_icon = tk.PhotoImage(file=os.path.join(BASE_DIR, "icons/align_right.png"))
 
-# --- BUTTONS ---
+# ================= BUTTONS =================
 ttk.Button(tool_bar, image=bold_icon, command=change_bold).grid(row=0, column=0)
 ttk.Button(tool_bar, image=italic_icon, command=change_italic).grid(row=0, column=1)
 ttk.Button(tool_bar, image=underline_icon, command=change_underline).grid(row=0, column=2)
