@@ -67,7 +67,7 @@ class App(tk.Tk):
     # ------------------------
     def show_frame(self, frame_class):
         frame = self.frames[frame_class]
-        frame.tkraise()
+        frame.tkraise() #moves the selected frame above the others, making it the visible page
 
     def navigate(self, frame_class):
         self.history.append(frame_class)
