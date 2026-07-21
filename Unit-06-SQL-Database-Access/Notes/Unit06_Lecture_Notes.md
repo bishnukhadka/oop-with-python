@@ -145,6 +145,12 @@ You do not need to be a database expert to use SQL in Python. The five commands
 above — `CREATE`, `INSERT`, `SELECT`, `UPDATE`, `DELETE` — cover the vast majority
 of what application code ever needs.
 
+**Note**: 
+
+- Teaching SQL is not a part of the syllabus. Please refer to [https://sqlcrashcourse.com](https://sqlcrashcourse.com) for a crash course in SQL. 
+- Or, refer to the [sql-cheet-sheet](https://www.geeksforgeeks.org/sql/sql-cheat-sheet/) by GeeksforGeeks. 
+- PDF from [GeeksforGeeks](https://media.geeksforgeeks.org/wp-content/uploads/20240328180119/SQL-Cheat-Sheet-PDF.pdf)
+
 ---
 
 ### 1.3 What Is SQLite?
@@ -165,9 +171,7 @@ perfect choice. The SQL you learn with SQLite transfers directly to every other
 database system.
 
 ```
-                         ┌──────────────────────────┐
-  your Python script ───▶│  sqlite3 (Python module) │───▶ library.db (file on disk)
-                         └──────────────────────────┘
+Your Python script ───▶   sqlite3 (Python module) ───▶ library.db (file on disk)                    
 ```
 
 ---
@@ -1846,4 +1850,4 @@ Every database-backed application follows **CRUD**:
 
 ---
 
-*BT151CO — Object-Oriented Programming · Unit 6 · Weeks 18 – 20*
+*BT151CO — Object-Oriented Programming · Unit 6 

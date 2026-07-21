@@ -3,4 +3,8 @@ Miscelleneous
 Resources
 **/__pycache__/
 .gitignore
-Unit-06-SQL-Database-Access/Slides
+**/Slides
+**/Answers.md
+Unit-07-Network-Programming
+Unit-06-SQL-Database-Access/Notes/SQL_notes.md
+Unit-06-SQL-Database-Access/Notes/SQL-Notes
