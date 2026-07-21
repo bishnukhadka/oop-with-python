@@ -1,5 +1,5 @@
 .venv
-Miscelleneous
+Miscellaneous
 Resources
 **/__pycache__/
 .gitignore
@@ -7,4 +7,3 @@ Resources
 **/Answers.md
 Unit-07-Network-Programming
 Unit-06-SQL-Database-Access/Notes/SQL_notes.md
-Unit-06-SQL-Database-Access/Notes/SQL-Notes
