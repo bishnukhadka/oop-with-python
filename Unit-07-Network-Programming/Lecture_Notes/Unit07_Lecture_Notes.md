@@ -83,6 +83,14 @@ A **protocol** is an agreed set of rules for how data is formatted, sent, and re
 
 > You will write a **custom protocol** in this unit — you decide the rules for how your client and server talk to each other.
 
+**How Ports Work**
+
+When a device communicates over a network, data packets are sent to its IP address. Each packet also includes a port number, which tells the operating system which application or service should receive that data.
+- **Port numbers identify services**: Each application listens on a specific port, so incoming data reaches the correct program.
+- **IP + Port + Protocol = Socket**: This combination ensures that network traffic is delivered precisely to the right process on the right device. (Note: Also IP version as well, IPv4 or IPv6)
+- **TCP and UDP protocols use ports differently**: TCP ensures reliable delivery, while UDP is faster but without guaranteed delivery.
+Ports act like entry doors for data — the IP brings the data to the device, and the port directs it to the correct application.
+
 ---
 
 ## 1.4 TCP vs UDP
@@ -113,7 +121,9 @@ import socket   # no pip install — already in Python
 
 A socket has two key properties:
 1. **Address family** — `socket.AF_INET` means IPv4 (the standard internet address format)
-2. **Socket type** — `socket.SOCK_STREAM` means TCP (reliable, ordered, stream-based)
+2. **Socket type**:
+    - `socket.SOCK_STREAM` means TCP (reliable, ordered, stream-based) and 
+    - `socket.SOCK_DGRAM` for UDP
 
 ```python
 # Create a TCP socket
@@ -296,7 +306,7 @@ The three steps in the client:
 
 ---
 
-## 3.1 The Client-Server Model — In Depth
+## 3.1 The Client-Server Model
 
 The client-server model is the dominant architecture of networked software. Understanding it deeply will help you design any networked system.
 
@@ -327,10 +337,10 @@ The client-server model is the dominant architecture of networked software. Unde
 
 Before any data can be sent, TCP performs a "handshake" to establish the connection:
 
-```
+<!-- ```
 Client                          Server
-  │                               │
-  │ ── SYN ──────────────────────▶│  "Can we connect?"
+  │                                 │
+  │ ── SYN ──────────────────────▶  │  "Can we connect?"
   │                               │
   │◀── SYN-ACK ───────────────────│  "Yes, I'm ready."
   │                               │
@@ -340,7 +350,7 @@ Client                          Server
   │                               │
   │ ── FIN ──────────────────────▶│  "I'm done."
   │◀── FIN-ACK ───────────────────│  "Acknowledged."
-```
+``` -->
 
 ![3-way-handshake](./images/Packet-interaction-in-TCP-connection-establishment-and-termination_W640.jpg)
 
@@ -381,7 +391,7 @@ For more demanding servers, you need to handle clients **concurrently** (at the 
 | Approach | Mechanism | When to use |
 |---|---|---|
 | **Sequential** | One client at a time (loop) | Simple, low-traffic servers |
-| **Threading** | `threading.Thread` per client | When each client needs a long conversation |
+| **Threading** | `threading.Thread` per client | When clients remain connected for longer periods |
 | **Non-blocking / async** | `asyncio` or `select()` | High performance, many simultaneous clients |
 
 > In this unit we will use the **sequential** model for simplicity, and introduce **threading** to show how to serve multiple clients.
@@ -405,6 +415,46 @@ After calling `accept()`, the server has **two** sockets:
 - The **client socket** (dedicated to this one client — used for all communication)
 
 ---
+
+## 3.6 Threads
+
+A `thread` is the smallest unit of execution that can be scheduled by an operating system. It represents a sequence of instructions that can run independently within a process.
+
+Key points:
+- A process is an instance of a running program.
+- A thread is an execution path inside that process.
+- A single process can contain multiple threads.
+
+You can think of a process as a container that owns resources, while threads are workers that execute code using those resources.
+
+|Process| Thread|
+| --------------------------------------------------------------- | --------------------------------------------------------- |
+| A process is an independent running program.                    | A thread is a smaller unit of execution inside a process. |
+| Has its **own memory**.                                         | Shares memory with other threads in the same process.     |
+| Processes are isolated from each other.                         | Threads can easily communicate because they share data.   |
+| If one process crashes, other processes are usually unaffected. | If one thread crashes, it may affect the entire process.  |
+
+
+
+Imagine you're writing a document while listening to music.
+
+- Process: The word processor and the music player are two separate processes.
+- Thread: Inside the word processor:
+    - One thread checks spelling.
+    - Another thread saves your work automatically.
+    - Another thread responds to your typing.
+
+All these threads work together inside the same program.
+
+A thread typically goes through the following states:
+
+- New – Thread is created but not yet started
+- Runnable – Thread is ready to run and waiting for CPU time
+- Running – Thread is currently executing on a CPU
+- Blocked / Waiting – Thread is waiting for a resource or event
+- Terminated – Thread has finished execution
+
+![thread life-cycle](https://javatrainingschool.com/wp-content/uploads/2021/09/image-13.png)
 
 ---
 
