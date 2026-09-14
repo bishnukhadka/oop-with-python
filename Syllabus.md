@@ -127,7 +127,7 @@ This course is designed to equip students with the following skills:
 
 ---
 
-### Unit 8 — Regular Expressions and Threads `[4 Hours]`
+### Unit 8 — Regular Expressions and Threads `[6 Hours]`
 
 **Regular Expressions**
 - `split()`
